@@ -37,5 +37,6 @@ class CreateLogin extends FormRequest
                 'password.min' => 'mật khẩu có ít nhất 4 kị tự'
 
         ];
+        return $message;
     }
 }
