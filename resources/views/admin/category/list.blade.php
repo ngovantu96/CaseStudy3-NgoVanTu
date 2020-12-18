@@ -69,7 +69,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example2" class="table table-bordered table-hover">
+                            <table id="table" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>STT</th>
@@ -101,7 +101,7 @@
                                                                 @csrf
                                                                 <div class="form-group">
                                                                     <label for="name">Tên Thể Loại </label>
-                                                                    <input type="text" class="form-control" name="name" value="{{ $categorie->name }}" >
+                                                                    <input type="text" class="form-control" name="name" value="{{ $categorie->name }}" required>
                                                                     @error('name')
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                                     @enderror

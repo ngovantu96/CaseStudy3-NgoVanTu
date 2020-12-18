@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCustomer;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -26,7 +27,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-
+        return view('admin.customers.create');
     }
 
     /**
@@ -35,7 +36,7 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCustomer $request)
     {
         $customers = new Customer();
         $customers->name    = $request->name;
@@ -67,7 +68,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.customers.list');
+        $customer = Customer::findOrFail($id);
+        return view('admin.customers.edit',compact('customer'));
     }
 
     /**
@@ -77,9 +79,15 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateCustomer $request, $id)
     {
-        //
+        $customer = new Customer();
+        $customer->name = $request->name;
+        $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
+        $customer->save();
+        return redirect()->route('customer.list');
     }
 
     /**
@@ -90,6 +98,8 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+        return redirect()->route('customer.list');
     }
 }

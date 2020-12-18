@@ -25,42 +25,37 @@
                             <div class="col-12 col-md-12">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h1>Thêm Mới Người  Dùng</h1>
-                                    </div>
-                                    <div class="col-12">
-                                        <form method="post" action="{{ route('user.store') }}" >
+                                        <form method="post" action="{{ route('customer.create') }}" >
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">Họ Và Tên</label>
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" required>
+                                                <label for="name">Tên khách Hàng</label>
+                                                <input type="text" class="form-control" name="name" value="{{ $customer->name }}" placeholder="Enter name" >
+                                                @error('name')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('name')
-                                            <p class="alert alert-danger">{{ $message }}</p>
-                                            @enderror
                                             <div class="form-group">
                                                 <label for="email">Email</label>
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+                                                <input type="email" class="form-control" name="email" value="{{ $customer->email }}" placeholder="Enter email" >
+                                                @error('email')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('email')
-                                            <p class="alert alert-danger">{{ $message }}</p>
-                                            @enderror
                                             <div class="form-group">
-                                                <label for="phone">Mật Khẩu</label>
-                                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+                                                <label for="phone">Số Điện Thoại</label>
+                                                <input type="text" class="form-control" name="phone" value="{{ $customer->phone }}" placeholder="Enter number phone">
+                                                @error('phone')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('password')
-                                            <p class="alert alert-danger">{{ $message }}</p>
-                                            @enderror
                                             <div class="form-group">
-                                                <label>Chức Vụ</label>
-                                                        <select name="role" id="">
-                                                            @foreach($roles as $role)
-                                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                <label for="address">Địa Chỉ</label>
+                                                <input type="text" class="form-control" name="address" value="{{ $customer->address }}" placeholder="Enter address">
+                                                @error('address')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Lưu</button>
                                         </form>
                                     </div>
                                 </div>

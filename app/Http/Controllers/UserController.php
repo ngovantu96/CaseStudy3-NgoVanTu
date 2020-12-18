@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUser;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class UserController extends Controller
         return view('admin.users.create',compact('roles'));
     }
 
-    public function store(Request $request)
+    public function store(CreateUser $request)
     {
         $user = new User();
         $user->name     = $request->name;
@@ -42,7 +43,7 @@ class UserController extends Controller
         return view('admin.users.edit',compact('user','roles'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CreateUser $request, $id)
     {
         $user = User::findOrFail($id);
         $user->name = $request->name;

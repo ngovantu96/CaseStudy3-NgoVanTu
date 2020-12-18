@@ -9,8 +9,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">General Form</li>
+                        <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">Danh Sách Chức Vụ</li>
                     </ol>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Chức Vụ</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" >
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" required>
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -72,7 +72,7 @@
                             <table id="table" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>STT</th>
                                     <th>Chức Vụ</th>
                                     <th></th>
                                 </tr>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRole;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class RoleController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CreateRole $request)
     {
         $role = new Role();
         $role->name = $request->name;
@@ -37,7 +38,7 @@ class RoleController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(CreateRole $request, $id)
     {
         $role = Role::findOrFail($id);
         $role->name = $request->name;
